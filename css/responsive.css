@@ -1,0 +1,54 @@
+/* Responsive styles */
+
+@media only screen and (min-width:0px) {
+    #restaurants-list li,
+    .restaurant-profile,
+    #restaurant-img,
+    #restaurant-cuisine,
+    #reviews-list li {
+        max-width: 100%;
+    }
+    #restaurant-name {
+        text-align: center;
+    }
+}
+
+@media only screen and (min-width:690px) {
+    #restaurants-list li,
+    #reviews-list li {
+        max-width: 33.33%;
+    }
+    .restaurant-profile {
+        max-width: 60%;
+    }
+    .restaurant-info {
+        max-width: 40%;
+    }
+    #restaurant-img,
+    #restaurant-cuisine {
+        max-width: 90%;
+    }
+    #restaurant-name {
+        text-align: left;
+    }
+}
+
+@media only screen and (min-width:1030px) {
+    #restaurants-list li,
+    #reviews-list li {
+        max-width: 300px;
+    }
+    .restaurant-profile {
+        max-width: 60%;
+    }
+    .restaurant-info {
+        max-width: 40%;
+    }
+    #restaurant-img,
+    #restaurant-cuisine {
+        max-width: 90%;
+    }
+    #restaurant-name {
+        text-align: left;
+    }
+}
