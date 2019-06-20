@@ -85,6 +85,9 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
 
     const address = document.getElementById('restaurant-address');
     address.innerHTML = restaurant.address;
+    const addressLabel = document.getElementById('aria-restaurant-address');
+    addressLabel.className = 'aria-label-hidden';
+    addressLabel.innerText = `Address: ${restaurant.address}`;
 
     const image = document.getElementById('restaurant-img');
     image.className = 'restaurant-img'
@@ -100,6 +103,9 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
 
     const cuisine = document.getElementById('restaurant-cuisine');
     cuisine.innerHTML = restaurant.cuisine_type;
+    const cuisineLabel = document.getElementById('aria-restaurant-cuisine');
+    cuisineLabel.className = 'aria-label-hidden';
+    cuisineLabel.innerText = `Cuisine ${restaurant.cuisine_type}`;
 
     // fill operating hours
     if (restaurant.operating_hours) {
@@ -116,6 +122,7 @@ fillRestaurantHoursHTML = (operatingHours = self.restaurant.operating_hours) => 
     const hours = document.getElementById('restaurant-hours');
     for (let key in operatingHours) {
         const row = document.createElement('tr');
+        row.tabIndex = 0;
 
         const day = document.createElement('td');
         day.innerHTML = key;
@@ -171,6 +178,23 @@ createReviewHTML = (review) => {
     const comments = document.createElement('p');
     comments.innerHTML = review.comments;
     li.appendChild(comments);
+
+    const reviewLabel = document.createElement('label');
+    let reviewer = review.name.replace(/\s+/g, '');
+    let id = `aria-${reviewer}-info`;
+    reviewLabel.id = id;
+    reviewLabel.className = `aria-label-hidden`;
+    reviewLabel.innerText = `Customer Review. 
+                            Customer Name: ${review.name}. 
+                            Date: ${review.date}.
+                            Ratings: ${review.rating}.
+                            Comment: ${review.comments}.`;
+    li.append(reviewLabel);
+
+    let attribute = document.createAttribute('aria-labelledby');
+    attribute.value = id;
+    li.setAttributeNode(attribute);
+    li.tabIndex = 0;
 
     return li;
 }

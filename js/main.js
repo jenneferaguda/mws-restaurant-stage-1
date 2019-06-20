@@ -157,6 +157,7 @@ fillRestaurantsHTML = (restaurants = self.restaurants) => {
  */
 createRestaurantHTML = (restaurant) => {
     const li = document.createElement('li');
+    li.tabIndex = 0;
 
     const image = document.createElement('img');
     image.className = 'restaurant-img';
@@ -188,6 +189,20 @@ createRestaurantHTML = (restaurant) => {
         window.location.href = DBHelper.urlForRestaurant(restaurant);
     };
     li.append(more);
+
+    const aLabel = document.createElement('label');
+    let restaurantName = restaurant.name.replace(/\s+/g, '');
+    let id = `aria-${restaurantName}-info`;
+    aLabel.id = id;
+    aLabel.className = `aria-label-hidden`;
+    aLabel.innerText = `Restaurant: ${restaurantName}, 
+                        Neighbohood: ${restaurant.neighborhood},
+                        Address: ${restaurant.address}`;
+    li.append(aLabel);
+
+    let attribute = document.createAttribute('aria-labelledby');
+    attribute.value = id;
+    li.setAttributeNode(attribute);
 
     return li
 }
