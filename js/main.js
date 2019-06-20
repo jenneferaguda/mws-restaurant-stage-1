@@ -163,11 +163,11 @@ createRestaurantHTML = (restaurant) => {
     let imgURL = DBHelper.imageUrlForRestaurant(restaurant);
     let imgLength = imgURL.length;
     imgurlbase = imgURL.substring(0, imgLength - 4);
-    const imgURL320w = imgurlbase + "_320w.jpg";
-    const imgURL600w = imgurlbase + "_600w.jpg";
+    const imgURL320w = `${imgurlbase}_320w.jpg`;
+    const imgURL600w = `${imgurlbase}_600w.jpg`;
     image.src = imgURL320w;
     image.srcset = `${imgURL320w} 320w, ${imgURL600w} 600w`;
-    image.alt = restaurant.name;
+    image.alt = `${restaurant.name} Restaurant at a glance!`;
     li.append(image);
 
     const name = document.createElement('h1');
