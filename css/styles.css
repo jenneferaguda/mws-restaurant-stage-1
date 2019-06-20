@@ -247,9 +247,10 @@ nav h1 a {
     font-size: 1.2em;
 }
 
-#restaurants-list li a {
+#restaurants-list li button {
     background-color: #444;
     color: #fff;
+    border: 1px solid #ccc;
     display: inline-block;
     font-size: 10pt;
     margin: 15px 0 0;
@@ -358,4 +359,8 @@ nav h1 a {
 #restaurant-hours {
     margin: auto;
     width: 100%;
+}
+
+.aria-label-hidden {
+    display: none;
 }
