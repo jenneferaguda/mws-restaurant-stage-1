@@ -29,7 +29,7 @@ This project follows the Udacity guidelines from [Restaurant Reviews project rub
 
 ## Leaflet.js and Mapbox:
 
-This project uses [leafletjs](https://leafletjs.com/) with [Mapbox](https://www.mapbox.com/). To know more about mapbox, please see [Mapbox](https://www.mapbox.com/). Mapbox is free to use, and does not require any payment information.
+This project uses [leafletjs](https://leafletjs.com/) with [Mapbox](https://www.mapbox.com/). Mapbox is free to use, and does not require any payment information.
 
 ### License
 Copyright ©2019 by Jennefer Aguda
