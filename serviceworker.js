@@ -1,4 +1,4 @@
-const cacheName = 'mws-restaurant-v1';
+const cacheName = 'mws-restaurant-v6';
 const cacheAssets = [
     'index.html',
     'restaurant.html',
@@ -10,21 +10,21 @@ const cacheAssets = [
     '/js/restaurant_info.js',
 ];
 
-self.addEventListener("install", function(event) {
+self.addEventListener("install", event => {
     event.waitUntil(
         caches.open(cacheName)
-        .then(function(cache) {
+        .then(cache => {
             return cache.addAll(cacheAssets)
-                .catch(function(error) {})
+                .catch(error => {})
         }));
 });
 
-self.addEventListener('activate', function(event) {
+self.addEventListener('activate', event => {
     event.waitUntil(
-        caches.keys().then(function(cacheNames) {
+        caches.keys().then(cacheNames => {
             return Promise.all(
                 cacheNames
-                .map(function(cacheName) {
+                .map(cacheName => {
                     return caches.delete(cacheName);
                 })
             );
@@ -32,19 +32,19 @@ self.addEventListener('activate', function(event) {
     );
 });
 
-self.addEventListener('fetch', function(event) {
+self.addEventListener('fetch', event => {
     event.respondWith(
         fetch(event.request)
-        .then(function(response) {
+        .then(response => {
             let responseClone = response.clone();
             caches
                 .open(cacheName)
-                .then(function(cache) {
+                .then(cache => {
                     cache.put(event.request, responseClone);
                 });
             return response;
         })
-        .catch(function(error) {
+        .catch(error => {
             caches.match(event.request);
         })
     )
