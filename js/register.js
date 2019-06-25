@@ -1,12 +1,10 @@
 //Set-up service worker
 if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/serviceworker.js')
-            .then(register => {
-                console.log('Service Worker: Registered!');
-            })
-            .catch(error => {
-                console.log(`Service Worker: Error!: ${error}`);
-            })
-    })
+    navigator.serviceWorker.register('/serviceworker.js', { scope: "/" })
+        .then(register => {
+            console.log(`Service Worker: Registered!: ${register.scope}`);
+        })
+        .catch(error => {
+            console.log(`Service Worker: Error!: ${error}`);
+        })
 }
